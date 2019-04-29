@@ -8,8 +8,8 @@ new Vue({
 }).$mount("#app");
 
 new Vue({
-  el: '#roleForm',
+  el: "#roleForm",
   data: {
     checkedNames: []
   }
-})
+});

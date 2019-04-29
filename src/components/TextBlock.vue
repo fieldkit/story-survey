@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "TextBlock",
   props: {
     msg: String,
     msg2: String
