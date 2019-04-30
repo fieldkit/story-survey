@@ -10,28 +10,33 @@
     <div id="imageStack">
       <img
         id="base"
+        class="wider"
         alt="Fieldkit Landscape"
-        src="./assets/Fieldkit_Panel 01_Final_no_overlays.png"
+        src="./assets/Fieldkit_Panel 01_Final_no_overlays_sized.png"
       />
       <img
         id="clouds"
+        class="wider"
         alt="Fieldkit Landscape"
-        src="./assets/Fieldkit_Panel 01_Final_clouds.png"
+        src="./assets/Fieldkit_Panel 01_Final_clouds_sized.png"
       />
       <img
         id="signal1"
+        class="wider"
         alt="Fieldkit Landscape"
-        src="./assets/Fieldkit_Panel 01_Final_signal1.png"
+        src="./assets/Fieldkit_Panel 01_Final_signal1_sized.png"
       />
       <img
         id="signal2"
+        class="wider"
         alt="Fieldkit Landscape"
-        src="./assets/Fieldkit_Panel 01_Final_signal2.png"
+        src="./assets/Fieldkit_Panel 01_Final_signal2_sized.png"
       />
       <img
         id="signal3"
+        class="wider"
         alt="Fieldkit Landscape"
-        src="./assets/Fieldkit_Panel 01_Final_signal3.png"
+        src="./assets/Fieldkit_Panel 01_Final_signal3_sized.png"
       />
     </div>
 
@@ -228,7 +233,7 @@ export default {
 
 #logo img {
   margin-top: 4em;
-  width: 25%;
+  width: 40%;
   min-width: 220px;
 }
 
@@ -245,6 +250,10 @@ export default {
 
 img {
   max-width: 100%;
+}
+img.wider {
+  max-width: 125%;
+  margin-left: -10%;
 }
 
 #imageStack {
