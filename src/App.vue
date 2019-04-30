@@ -111,29 +111,15 @@
       msg2="We're trying to learn a bit more about how people might use Fieldkit in the real world. Help us by answering a few easy questions (only three or four minutes), and we'll give you a special discount when Fieldkit is released."
     />
 
+    <SurveyForm />
+
   </div>
 </template>
 
 <script>
 //VUE IMPORTS
 import TextBlock from "./components/TextBlock.vue";
-import RoleForm from "./components/RoleForm.vue";
-import SensorForm from "./components/SensorForm.vue";
-import Chooser from "./components/Chooser.vue";
-import Contact from "./components/Contact.vue";
-
-//FEATURE LIST FOR RANDOM PAIRS
-const features = [
-  "Low per-unit cost",
-  "Long battery life in the field",
-  "Easy sharing of data",
-  "Data visualization",
-  "Integration with social media feeds",
-  "Research-grade data",
-  "Easy setup for non experts",
-  "An active online community",
-  "Integration with non-Fieldkit sensors"
-];
+import SurveyForm from "./components/Survey.vue";
 
 // var cloudX = 0;
 var tas = [1.0, 1.0, 1.0];
@@ -174,28 +160,14 @@ setInterval(function() {
   }
 }, 3);
 
-function pickTwo() {
-  var i1 = Math.floor(Math.random() * (features.length - 1));
-  var i2 = i1 + Math.ceil(Math.random() * (features.length - 1 - i1));
-  return [i1, i2];
-}
 
 export default {
   name: "app",
   components: {
     TextBlock,
-    RoleForm,
-    Chooser,
-    Contact,
-    SensorForm
+    SurveyForm
   },
   methods: {
-    choose: function() {
-      var picks = pickTwo();
-      this.$children[7].left = features[picks[0]];
-      this.$children[7].right = features[picks[1]];
-      this.$children[7].total--;
-    }
   }
 };
 </script>
