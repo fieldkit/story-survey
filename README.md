@@ -1,5 +1,3 @@
-# my-project
-
 ## Project setup
 ```
 yarn install
