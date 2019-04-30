@@ -72,7 +72,7 @@
       />
       <TextBlock
         msg="For sensor projects, big and small."
-        msg2="Fieldkit’s low per-unit cost makes deploying networks of several, dozens, even hundreds of sensors possible - no matter how small the budget."
+        msg2="FieldKit’s low per-unit cost makes deploying networks of several, dozens, even hundreds of sensors possible - no matter how small the budget."
       />
 
       <!------- 4th IMG & PARA --------->
@@ -82,7 +82,7 @@
       />
       <TextBlock
         msg="Easily explore and share your data."
-        msg2="The fieldkit platform securely stores and manages your data, and lets you share and tell stories with it."
+        msg2="The FieldKit platform securely stores and manages your data, and lets you share and tell stories with it."
       />
 
       <!------- 5th IMG & PARA --------->
@@ -92,7 +92,7 @@
       />
       <TextBlock
         msg="FieldKit is for everyone."
-        msg2="We’re building fieldkit because we believe everyone should be able to understand and advocate for the world they live in.
+        msg2="We’re building FieldKit because we believe everyone should be able to understand and advocate for the world they live in.
 
       FieldKit is a tool for field scientists, environmental advocates, naturalists, students and teachers, and most importantly… it’s for you!
       "
@@ -106,10 +106,12 @@
       alt="FieldKit Easy Install"
       src="./assets/Fieldkit_People_01.png"
     />
-    <TextBlock
-      msg="Help us make Fieldkit."
-      msg2="We're trying to learn a bit more about how people might use FieldKit in the real world. Help us by answering a few easy questions (only three or four minutes), and we'll give you a special discount when FieldKit is released."
-    />
+    <div id="help-us" :class=$mq>
+      <TextBlock
+        msg="Help us make FieldKit."
+        msg2="We're trying to learn a bit more about how people might use FieldKit in the real world. Help us by answering a few easy questions (only three or four minutes), and we'll give you a special discount when FieldKit is released."
+      />
+    </div>
 
     <SurveyForm />
 

@@ -37,6 +37,16 @@
         <div class="choice">
           <input
             type="checkbox"
+            id="educator"
+            value="Educator"
+            v-model="role.checkedNames"
+          />
+          <label for="educator">Educator</label>
+        </div>
+
+        <div class="choice">
+          <input
+            type="checkbox"
             id="sciComm"
             value="Science Communicator"
             v-model="role.checkedNames"
