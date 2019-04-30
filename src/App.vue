@@ -159,14 +159,14 @@ const features = [
   "Integration with non-Fieldkit sensors"
 ];
 
-var cloudX = 0;
+// var cloudX = 0;
 var tas = [1.0, 1.0, 1.0];
 
-setInterval(function() {
-  document.getElementById("clouds").style.left = cloudX + "px";
-  //console.log(Math.floor(cloudX) + "px");
-  cloudX += 0.1;
-}, 30);
+// setInterval(function() {
+//   document.getElementById("clouds").style.left = cloudX + "px";
+//   //console.log(Math.floor(cloudX) + "px");
+//   cloudX += 0.1;
+// }, 30);
 
 setInterval(function() {
   var v1 = document.getElementById("signal1").style.opacity;
@@ -187,7 +187,6 @@ setInterval(function() {
   var chance = 0.005;
   if (Math.random() < chance) {
     tas[0] = tas[0] == 1 ? 0 : 1;
-    console.log(tas);
   }
 
   if (Math.random() < chance) {
