@@ -191,8 +191,8 @@
         <div class="question-number">Question {{ 3 + priorities.done }} of 6</div>
         <h2>Which of these features would be more important to you?</h2>
         <div class="instruction">(Choose one)</div>
-        <div class="priority" v-on:click="choose('left')">{{ priorities.left }}</div>
-        <div class="priority" v-on:click="choose('right')">{{ priorities.right }}</div>
+        <div class="priority" v-on:click="choose('left,right')">{{ priorities.left }}</div>
+        <div class="priority" v-on:click="choose('right,left')">{{ priorities.right }}</div>
       </div>
 
       <div v-if="step === 4">
@@ -269,7 +269,7 @@
       next() {
         this.step++;
       },
-      choose: function(choice) {
+      choose: function(choices) {
         if(this.priorities.done === 0) {
           // remove first two choices
           // Get the value of the second option before
@@ -279,7 +279,9 @@
           var index = features.indexOf(second);
           features.splice(index,1);
         }
-        this.priorities.checkedNames.push(this.priorities[choice]);
+        var firstChoice = this.priorities[choices.split(",")[0]];
+        var secondChoice = this.priorities[choices.split(",")[1]];
+        this.priorities.checkedNames.push(firstChoice+","+secondChoice);
         // display new choices
         var picks = pickTwo();
         this.priorities.left = features[picks[0]];
