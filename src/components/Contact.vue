@@ -1,6 +1,16 @@
 <template>
   <div id="choose">
     <h1>{{ msg }}</h1>
+    <form>
+      <input
+        type="text"
+        id="fname"
+        name="firstname"
+        placeholder="Add your e-mail"
+      />
+      <br />
+      <input type="submit" value="Subscribe" />
+    </form>
   </div>
 </template>
 

@@ -1,8 +1,12 @@
 <template>
   <div id="app">
+    <!------- FIELDKIT LOGO --------->
+
     <div id="logo">
       <img src="./assets/fieldkit-logo.svg" />
     </div>
+
+    <!------- TOP IMAGE + ANIMATED ELEMENTS --------->
     <div id="imageStack">
       <img
         id="base"
@@ -30,10 +34,20 @@
         src="./assets/Fieldkit_Panel 01_Final_signal3.png"
       />
     </div>
+
+    <!------- 1st PARA --------->
     <TextBlock
       msg="Fieldkit is coming."
       msg2="Fieldkit lets everyone everywhere monitor the world around them with low-cost, reliable sensors and easy-to-use tools for storing, sharing and telling stories with data."
     />
+    <div id="scrollDown">
+      <h3>Scroll to be notified when Fieldkit is ready</h3>
+      <div id="arrow">
+        <img src="./assets/downward-arrow.png" width="30px" height="30px" />
+      </div>
+    </div>
+
+    <!------- 2nd IMG & PARA --------->
     <img
       alt="Fieldkit Easy Install"
       src="./assets/Fieldkit_Panel 02_Final_sized.jpg"
@@ -42,6 +56,8 @@
       msg="Easy-to-use environmental sensing."
       msg2="Fieldkit sensors are designed to be accurate, durable and extensible. Our mobile app makes configuration, testing and deployment easy for amateurs and professionals alike."
     />
+
+    <!------- 3rd IMG & PARA --------->
     <img
       alt="Fieldkit Easy Install"
       src="./assets/Fieldkit_Panel 03_Final_sized.jpg"
@@ -50,6 +66,8 @@
       msg="For sensor projects, big and small."
       msg2="Fieldkit’s low per-unit cost makes deploying networks of several, dozens, even hundreds of sensors possible - no matter how small the budget."
     />
+
+    <!------- 4th IMG & PARA --------->
     <img
       alt="Fieldkit Easy Install"
       src="./assets/Fieldkit_Panel 04_Final_sized.jpg"
@@ -58,6 +76,8 @@
       msg="Easily explore and share your data."
       msg2="The fieldkit platform securely stores and manages your data, and lets you share and tell stories with it."
     />
+
+    <!------- 5th IMG & PARA --------->
     <img
       alt="Fieldkit is for everyone"
       src="./assets/Fieldkit_Panel 05_Final_sized.png"
@@ -69,6 +89,10 @@
     Fieldkit is a tool for field scientists, environmental advocates, naturalists, students and teachers, and most importantly… it’s for you!
     "
     />
+
+    <div id="contentEnd"></div>
+
+    <!------- QUIZ --------->
     <img
       id="campers"
       alt="Fieldkit Easy Install"
@@ -79,17 +103,17 @@
       msg2="We've been busy in the lab making first public versions of the Fieldkit sensors + software platform. We're trying to learn a bit more about how people might use Fieldkit in the real world. If you can help us to answer a few easy questions (it should only take three or four minutes), we'll give you a special discount when Fieldkit is released."
     />
     <RoleForm msg="What role best describes what you do?" />
-    <img
+    <!-- img
       id="user"
       alt="Fieldkit Easy Install"
       src="./assets/Fieldkit_People_02.png"
-    />
+    /-->
     <SensorForm msg="What types of sensors are most interesting to you?" />
-    <img
+    <!--img
       id="sensors"
       alt="Fieldkit Easy Install"
       src="./assets/Fieldkit_Panel 01_Final_sensors.png"
-    />
+    /-->
     <Chooser
       msg="As a prospective Fieldkit user, which of these features would be more important to you?"
       right="Low per-unit cost"
@@ -97,22 +121,27 @@
       v-on:choose="choose()"
       total="5"
     />
+    <div id="quizEnd"></div>
+
+    <!------- CONTACT --------->
     <img
       id="contact"
       alt="Fieldkit Easy Install"
       src="./assets/Fieldkit_People_03.png"
     />
-    <Contact msg="Can we stay in touch?" />
+    <Contact msg="Sign up to be notified when Fieldkit is ready" />
   </div>
 </template>
 
 <script>
+//VUE IMPORTS
 import TextBlock from "./components/TextBlock.vue";
 import RoleForm from "./components/RoleForm.vue";
 import SensorForm from "./components/SensorForm.vue";
 import Chooser from "./components/Chooser.vue";
 import Contact from "./components/Contact.vue";
 
+//FEATURE LIST FOR RANDOM PAIRS
 const features = [
   "Low per-unit cost",
   "Long battery life in the field",
@@ -126,7 +155,6 @@ const features = [
 ];
 
 var cloudX = 0;
-
 var tas = [1.0, 1.0, 1.0];
 
 setInterval(function() {
@@ -166,12 +194,6 @@ setInterval(function() {
   }
 }, 3);
 
-function cloudMove() {}
-
-function switchChoose() {
-  alert("test");
-}
-
 function pickTwo() {
   var i1 = Math.floor(Math.random() * (features.length - 1));
   var i2 = i1 + Math.ceil(Math.random() * (features.length - 1 - i1));
@@ -188,7 +210,7 @@ export default {
     SensorForm
   },
   methods: {
-    choose: function(targ) {
+    choose: function() {
       var picks = pickTwo();
       this.$children[7].left = features[picks[0]];
       this.$children[7].right = features[picks[1]];
@@ -201,11 +223,13 @@ export default {
 <style>
 :root {
   --fk-gray: #264052;
+  --fk-red: #cc6575;
 }
 
 #logo img {
   margin-top: 4em;
   width: 25%;
+  min-width: 220px;
 }
 
 #app {
@@ -228,7 +252,12 @@ img {
 }
 
 h1 {
-  font-size:2.5em;
+  font-size: 2.5em;
+}
+
+h3 {
+  font-weight: normal;
+  color: grey;
 }
 
 #clouds,
@@ -243,6 +272,25 @@ h1 {
 
 #clouds {
   z-index: 1;
+}
+
+#scrollDown,
+#contentEnd,
+#quizEnd {
+  padding-bottom: 15%;
+  border-bottom: 1px solid #cccccc;
+}
+
+#contentDown,
+#quizEnd {
+  margin-bottom: 15%;
+}
+
+#arrow {
+  padding-top: -10px;
+}
+
+#scrollDown h3 {
 }
 
 #campers {
@@ -260,5 +308,37 @@ h1 {
 p {
   font-size: 1.5em;
   text-align: left;
+}
+
+input[type="text"],
+select {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  width: 50%;
+  min-width: 220px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"] {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  width: 50%;
+  min-width: 220px;
+  background-color: white;
+  color: var(--fk-red);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 2px solid var(--fk-red);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: white;
 }
 </style>
