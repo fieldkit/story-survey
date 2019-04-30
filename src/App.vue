@@ -11,31 +11,31 @@
       <img
         id="base"
         class="wider"
-        alt="Fieldkit Landscape"
+        alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_no_overlays_sized.png"
       />
       <img
         id="clouds"
         class="wider"
-        alt="Fieldkit Landscape"
+        alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_clouds_sized.png"
       />
       <img
         id="signal1"
         class="wider"
-        alt="Fieldkit Landscape"
+        alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_signal1_sized.png"
       />
       <img
         id="signal2"
         class="wider"
-        alt="Fieldkit Landscape"
+        alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_signal2_sized.png"
       />
       <img
         id="signal3"
         class="wider"
-        alt="Fieldkit Landscape"
+        alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_signal3_sized.png"
       />
     </div>
@@ -43,12 +43,12 @@
     <!------- 1st PARA --------->
     <div id="intro">
       <TextBlock
-        msg="Fieldkit is coming."
-        msg2="Fieldkit lets everyone everywhere monitor the world around them with low-cost, reliable sensors and easy-to-use tools for storing, sharing and telling stories with data."
+        msg="FieldKit is coming."
+        msg2="FieldKit lets everyone everywhere monitor the world around them with low-cost, reliable sensors and easy-to-use tools for storing, sharing and telling stories with data."
       />
     </div>
     <div id="scrollDown">
-      <div class="hint">Scroll to be notified when Fieldkit is ready</div>
+      <div class="hint">Scroll to be notified when FieldKit is ready</div>
       <div class="arrow">
         <img src="./assets/downward-arrow.png" width="30px" height="30px" />
       </div>
@@ -57,17 +57,17 @@
     <div class="narrower">
       <!------- 2nd IMG & PARA --------->
       <img
-        alt="Fieldkit Easy Install"
+        alt="FieldKit Easy Install"
         src="./assets/Fieldkit_Panel 02_Final_sized.jpg"
       />
       <TextBlock
         msg="Easy-to-use environmental sensing."
-        msg2="Fieldkit sensors are designed to be accurate, durable and extensible. Our mobile app makes configuration, testing and deployment easy for amateurs and professionals alike."
+        msg2="FieldKit sensors are designed to be accurate, durable and extensible. Our mobile app makes configuration, testing and deployment easy for amateurs and professionals alike."
       />
 
       <!------- 3rd IMG & PARA --------->
       <img
-        alt="Fieldkit Easy Install"
+        alt="FieldKit Easy Install"
         src="./assets/Fieldkit_Panel 03_Final_sized.jpg"
       />
       <TextBlock
@@ -77,7 +77,7 @@
 
       <!------- 4th IMG & PARA --------->
       <img
-        alt="Fieldkit Easy Install"
+        alt="FieldKit Easy Install"
         src="./assets/Fieldkit_Panel 04_Final_sized.jpg"
       />
       <TextBlock
@@ -87,14 +87,14 @@
 
       <!------- 5th IMG & PARA --------->
       <img
-        alt="Fieldkit is for everyone"
+        alt="FieldKit is for everyone"
         src="./assets/Fieldkit_Panel 05_Final_sized.png"
       />
       <TextBlock
-        msg="Fieldkit is for everyone."
+        msg="FieldKit is for everyone."
         msg2="We’re building fieldkit because we believe everyone should be able to understand and advocate for the world they live in.
 
-      Fieldkit is a tool for field scientists, environmental advocates, naturalists, students and teachers, and most importantly… it’s for you!
+      FieldKit is a tool for field scientists, environmental advocates, naturalists, students and teachers, and most importantly… it’s for you!
       "
       />
 
@@ -103,12 +103,12 @@
 
     <img
       id="campers"
-      alt="Fieldkit Easy Install"
+      alt="FieldKit Easy Install"
       src="./assets/Fieldkit_People_01.png"
     />
     <TextBlock
       msg="Help us make Fieldkit."
-      msg2="We're trying to learn a bit more about how people might use Fieldkit in the real world. Help us by answering a few easy questions (only three or four minutes), and we'll give you a special discount when Fieldkit is released."
+      msg2="We're trying to learn a bit more about how people might use FieldKit in the real world. Help us by answering a few easy questions (only three or four minutes), and we'll give you a special discount when FieldKit is released."
     />
 
     <SurveyForm />
