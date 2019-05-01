@@ -197,15 +197,15 @@
 
 
       <!-- And then priorities -->
-      <div v-if="step === 3">
+      <div class="bottom-space" v-if="step === 3">
         <div class="question-number">Question {{ 3 + priorities.done }} of 6</div>
-        <h2>Which of these features would be more important to you?</h2>
+        <h2 class="smaller">Which of these features would be more important to you?</h2>
         <div class="instruction">(Choose one)</div>
         <div class="priority" v-on:click="choose('left,right')">{{ priorities.left }}</div>
         <div class="priority" v-on:click="choose('right,left')">{{ priorities.right }}</div>
       </div>
 
-      <div v-if="step === 4">
+      <div class="bottom-space" v-if="step === 4">
         <h1>Thank you for taking our survey!</h1>
         <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
 
@@ -310,6 +310,15 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#app.mobile h2 {
+  font-size: 1.4em;
+  line-height: 1.2em;
+  margin: 0.5em 0;
+}
+#app.mobile h2.smaller {
+  font-size: 1.3em;
+}
+
 #survey-form {
   margin-top: 10%;
 }
@@ -331,6 +340,9 @@
   margin-top: -1.5%;
   margin-bottom: 4%;
   font-size: 1.2em;
+}
+#app.mobile .instruction {
+  font-size: 1em;
 }
 
 label {
@@ -360,8 +372,13 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+#app.mobile .question-number {
+  font-size: 0.9em;
+  font-weight: lighter;
+}
+
 .priority {
-  width: 270px;
+  width: 265px;
   padding: 15px;
   border-radius: 3px;
   border: 1px solid lightgray;
@@ -369,20 +386,25 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-#signup {
-  margin-top: 5%;
-  border-top: 1px solid #cccccc;
-  padding-top: 3%;
-
+.bottom-space {
+  margin-bottom: 15%;
 }
 
-address a {
+#survey-form a {
   color: inherit;
   font-style: normal;
   font-weight: bold;
   font-size: 1.15em;
 }
 
+#signup {
+  margin-top: 5%;
+  border-top: 1px solid #cccccc;
+  padding-top: 3%;
+}
+#signup h1 {
+  padding: 0 1em;
+}
 #email {
   min-width: 288px;
   padding: 12px 0 12px 12px;
@@ -402,6 +424,13 @@ address a {
   border: 1px solid var(--fk-red);
   border-radius: 4px;
   cursor: pointer;
+}
+#app.mobile #email {
+  min-width: 260px;
+  margin: 1em 0;
+}
+#app.mobile #subscribe {
+  width: 275px;
 }
 
 </style>

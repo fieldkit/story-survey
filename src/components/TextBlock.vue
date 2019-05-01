@@ -31,6 +31,6 @@ a {
 .text-block {
   text-align: center;
   font-weight: lighter;
-  margin-bottom: 5%;
+  margin-bottom: 2em;
 }
 </style>

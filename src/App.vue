@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="$mq">
     <!------- FIELDKIT LOGO --------->
 
     <div id="logo">
@@ -7,34 +7,29 @@
     </div>
 
     <!------- TOP IMAGE + ANIMATED ELEMENTS --------->
-    <div id="imageStack">
+    <div id="imageStack" :class="$mq">
       <img
         id="base"
-        class="wider"
         alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_no_overlays_sized.png"
       />
       <img
         id="clouds"
-        class="wider"
         alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_clouds_sized.png"
       />
       <img
         id="signal1"
-        class="wider"
         alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_signal1_sized.png"
       />
       <img
         id="signal2"
-        class="wider"
         alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_signal2_sized.png"
       />
       <img
         id="signal3"
-        class="wider"
         alt="FieldKit Landscape"
         src="./assets/Fieldkit_Panel 01_Final_signal3_sized.png"
       />
@@ -180,12 +175,6 @@ export default {
   --fk-red: #cc6575;
 }
 
-#logo img {
-  margin-top: 4em;
-  width: 40%;
-  min-width: 220px;
-}
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -200,10 +189,18 @@ export default {
   margin-left: 7.5%;
 }
 
+#logo img {
+  margin-top: 4em;
+  width: 40%;
+}
+#app.mobile #logo img {
+  margin-top: 2em;
+  width: 55%;
+}
 img {
   max-width: 100%;
 }
-img.wider {
+#imageStack.desktop img {
   max-width: 125%;
   margin-left: -10%;
 }
@@ -217,6 +214,14 @@ h1 {
 }
 #intro h1 {
   font-size: 2.25em;
+}
+#app.mobile h1 {
+  font-size: 1.4em;
+  margin-bottom: 0.5em;
+}
+#app.mobile #intro h1 {
+  font-size: 1.5em;
+  margin: 0;
 }
 
 h3 {
@@ -241,6 +246,7 @@ h3 {
 #scrollDown,
 #contentEnd {
   padding-bottom: 7%;
+  margin-bottom: 7%;
   border-bottom: 1px solid #cccccc;
 }
 
@@ -254,6 +260,19 @@ p {
 #intro p {
   font-size: 1.45em;
 }
+#app.mobile p {
+  font-size: 0.93em;
+}
+#app.mobile #intro p {
+  font-size: 1.15em;
+  line-height: 1.25em;
+  margin: 0.5em 0;
+}
+
+#help-us.mobile {
+  padding: 1em;
+}
+
 .hint {
   font-weight: lighter;
   font-size: 0.9em;
