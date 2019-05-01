@@ -202,28 +202,29 @@
         <h2 class="smaller">Which of these features would be more important to you?</h2>
         <div class="instruction">(Choose one)</div>
 
-        <div class="priority">
-          <input
-            type="radio"
-            id="leftPriority"
-            value="left,right"
-            name="featurePriority"
-            v-model="priorities.selection"
-          />
-          <label for="leftPriority">{{ priorities.left }}</label>
+        <div id="priorities-wrapper">
+          <div class="priority">
+            <input
+              type="radio"
+              id="leftPriority"
+              value="left,right"
+              name="featurePriority"
+              v-model="priorities.selection"
+            />
+            <label for="leftPriority">{{ priorities.left }}</label>
+          </div>
+          <div class="priority">
+            <input
+              type="radio"
+              id="rightPriority"
+              value="right,left"
+              name="featurePriority"
+              v-model="priorities.selection"
+            />
+            <label for="rightPriority">{{ priorities.right }}</label>
+          </div>
         </div>
-        <div class="priority">
-          <input
-            type="radio"
-            id="rightPriority"
-            value="right,left"
-            name="featurePriority"
-            v-model="priorities.selection"
-          />
-          <label for="rightPriority">{{ priorities.right }}</label>
-        </div>
-
-        <button @click.prevent="choose()" class="next-btn">Next</button>
+        <button @click.prevent="choose()" class="next-btn under">Next</button>
       </div>
 
       <!-- Thank you -->
@@ -353,12 +354,18 @@
   max-width: 400px;
   margin: auto;
 }
-#survey-form .choice {
-  width: 250px;
-  margin: auto;
-}
 
+.choice {
+  width: 250px;
+}
+.priority {
+  width: 310px;
+}
+#priorities-wrapper {
+  display: inline-block;
+}
 .choice, .priority {
+  margin: auto;
   display: block;
   text-align: left;
 }
@@ -410,8 +417,12 @@ input[type="radio"] {
   border: none;
   border-radius: 4px;
   padding: 12px 0;
-  margin: 40px 0;
+  margin: 40px auto;
   cursor: pointer;
+}
+.next-btn.under {
+  display: block;
+  clear: both;
 }
 
 #app.mobile .question-number {
