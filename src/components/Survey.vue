@@ -231,6 +231,7 @@
       <div class="bottom-space" v-if="step === 4">
         <h1>Thank you for taking our survey!</h1>
         <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
+        <p class="top-space">Provide your email below and we'll send you a discount code when FieldKit is ready to go.</p>
       </div>
     </form>
 
@@ -477,8 +478,12 @@ input[type="radio"] {
   font-weight: lighter;
 }
 
+#survey-form p.top-space {
+  margin-top: 5%;
+}
 .bottom-space {
   margin-bottom: 15%;
+  padding: 0 1em;
 }
 
 #survey-form a {
