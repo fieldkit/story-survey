@@ -201,10 +201,32 @@
         <div class="question-number">Question {{ 3 + priorities.done }} of 6</div>
         <h2 class="smaller">Which of these features would be more important to you?</h2>
         <div class="instruction">(Choose one)</div>
-        <div class="priority" v-on:click="choose('left,right')">{{ priorities.left }}</div>
-        <div class="priority" v-on:click="choose('right,left')">{{ priorities.right }}</div>
+
+        <div class="priority">
+          <input
+            type="radio"
+            id="leftPriority"
+            value="left,right"
+            name="featurePriority"
+            v-model="priorities.selection"
+          />
+          <label for="leftPriority">{{ priorities.left }}</label>
+        </div>
+        <div class="priority">
+          <input
+            type="radio"
+            id="rightPriority"
+            value="right,left"
+            name="featurePriority"
+            v-model="priorities.selection"
+          />
+          <label for="rightPriority">{{ priorities.right }}</label>
+        </div>
+
+        <button @click.prevent="choose()" class="next-btn">Next</button>
       </div>
 
+      <!-- Thank you -->
       <div class="bottom-space" v-if="step === 4">
         <h1>Thank you for taking our survey!</h1>
         <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
@@ -263,6 +285,7 @@
         priorities: {
           left: features[firstTwo[0]],
           right: features[firstTwo[1]],
+          selection: "none,none",
           checkedNames: [],
           done: 0
         }
@@ -275,7 +298,11 @@
       next() {
         this.step++;
       },
-      choose: function(choices) {
+      choose: function() {
+        var selection = this.priorities.selection.split(",");
+        document.getElementById("leftPriority").checked = false
+        document.getElementById("rightPriority").checked = false
+
         if(this.priorities.done === 0) {
           // remove first two choices
           // Get the value of the second option before
@@ -285,8 +312,8 @@
           var index = features.indexOf(second);
           features.splice(index,1);
         }
-        var firstChoice = this.priorities[choices.split(",")[0]];
-        var secondChoice = this.priorities[choices.split(",")[1]];
+        var firstChoice = this.priorities[selection[0]];
+        var secondChoice = this.priorities[selection[1]];
         this.priorities.checkedNames.push(firstChoice+","+secondChoice);
         // display new choices
         var picks = pickTwo();
@@ -331,7 +358,7 @@
   margin: auto;
 }
 
-.choice {
+.choice, .priority {
   display: block;
   text-align: left;
 }
@@ -345,12 +372,17 @@
   font-size: 1em;
 }
 
-label {
+.choice label {
   font-size: 1em;
   font-weight: lighter;
   width: 210px;
   float: right;
   padding-top: 8px;
+}
+
+.priority label {
+  float: left;
+  margin-top: 0.5em;
 }
 
 input[type="checkbox"] {
@@ -359,6 +391,16 @@ input[type="checkbox"] {
   cursor: pointer;
   zoom: 1.1;
 }
+
+input[type="radio"] {
+  float: left;
+  clear: both;
+  width: 30px; /*Desired width*/
+  height: 30px; /*Desired height*/
+  cursor: pointer;
+  zoom: 1.1;
+}
+
 .next-btn {
   width: 300px;
   background: #cc6575;
@@ -375,15 +417,6 @@ input[type="checkbox"] {
 #app.mobile .question-number {
   font-size: 0.9em;
   font-weight: lighter;
-}
-
-.priority {
-  width: 265px;
-  padding: 15px;
-  border-radius: 3px;
-  border: 1px solid lightgray;
-  margin: 20px auto;
-  cursor: pointer;
 }
 
 .bottom-space {
