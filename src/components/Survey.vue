@@ -236,8 +236,8 @@
 
     <div id="signup">
       <h1>Sign up to be notified when FieldKit is ready!</h1>
-      <input type="textbox" id="email" name="email" placeholder="Add your email">
-      <input type="submit" id="subscribe" name="subscribe" value="Subscribe">
+      <input type="textbox" v-model="email" id="email" name="email" placeholder="Add your email">
+      <input type="submit" v-on:click="saveEmail()" id="subscribe" name="subscribe" value="Subscribe">
     </div>
 
   </div>
@@ -255,6 +255,30 @@
     "An active online community",
     "Integration with non-FieldKit sensors"
   ];
+  const axiosConfig = {
+    header: { "Content-Type": "application/x-www-form-urlencoded" }
+  };
+
+  function storeSurvey(survey) {
+    var form = {
+      "form-name": "netlify-survey",
+      "roles": survey.role.checkedNames.join(","),
+      "sensors": survey.sensor.checkedNames.join(","),
+      "features": survey.priorities.checkedNames.join(","),
+    }
+
+    var encodedForm = Object.keys(form)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(form[key])}`
+        )
+        .join("&");
+
+    survey.axios.post(
+      "/",
+      encodedForm,
+      axiosConfig
+    );
+  }
 
   function pickTwo() {
     var i1 = Math.floor(Math.random() * (features.length - 1));
@@ -284,7 +308,9 @@
           selection: "none,none",
           checkedNames: [],
           done: 0
-        }
+        },
+        email: "",
+        surveyComplete: 0
       };
     },
     methods:{
@@ -329,9 +355,29 @@
 
         this.priorities.done++;
         if(this.priorities.done > 3) {
+          this.surveyComplete = 1;
+          storeSurvey(this);
           this.step++;
-          // alert('Submit to data storage');
         }
+      },
+      saveEmail: function() {
+        var form = {
+          "form-name": "netlify-email",
+          "email": this.email,
+          "surveyComplete": this.surveyComplete
+        }
+
+        var encodedForm = Object.keys(form)
+            .map(
+              key => `${encodeURIComponent(key)}=${encodeURIComponent(form[key])}`
+            )
+            .join("&");
+
+        this.axios.post(
+          "/",
+          encodedForm,
+          axiosConfig
+        );
       }
     }
   };

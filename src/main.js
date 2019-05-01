@@ -1,8 +1,11 @@
 import Vue from "vue";
 import VueMq from 'vue-mq'
 import App from "./App.vue";
+import axios from 'axios'
 
 Vue.config.productionTip = false;
+
+Vue.prototype.axios = axios
 
 Vue.use(VueMq, {
   breakpoints: {

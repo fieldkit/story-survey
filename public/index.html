@@ -13,5 +13,27 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+
+    <!-- Static hidden forms for Netlify -->
+    <form
+      name="netlify-survey"
+      method="post"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="netlify-survey" />
+      <textarea name="roles"></textarea>
+      <textarea name="sensors"></textarea>
+      <textarea name="features"></textarea>
+    </form>
+    <form
+      name="netlify-email"
+      method="post"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="netlify-email" />
+      <input type="text" name="email" />
+      <input type="checkbox" name="surveyComplete" />
+    </form>
+
   </body>
 </html>
