@@ -300,10 +300,6 @@
         this.step++;
       },
       choose: function() {
-        var selection = this.priorities.selection.split(",");
-        document.getElementById("leftPriority").checked = false
-        document.getElementById("rightPriority").checked = false
-
         if(this.priorities.done === 0) {
           // remove first two choices
           // Get the value of the second option before
@@ -313,9 +309,16 @@
           var index = features.indexOf(second);
           features.splice(index,1);
         }
-        var firstChoice = this.priorities[selection[0]];
-        var secondChoice = this.priorities[selection[1]];
-        this.priorities.checkedNames.push(firstChoice+","+secondChoice);
+
+        // check to see if they selected anything
+        if(document.querySelector('input[name="featurePriority"]:checked')) {
+          var selection = this.priorities.selection.split(",");
+          var firstChoice = this.priorities[selection[0]];
+          var secondChoice = this.priorities[selection[1]];
+          this.priorities.checkedNames.push(firstChoice+">"+secondChoice);
+        }
+        // else: could store a "skipped" notice, if desired
+
         // display new choices
         var picks = pickTwo();
         this.priorities.left = features[picks[0]];
@@ -325,6 +328,9 @@
         features.splice(picks[0],1)
         var secondIndex = features.indexOf(this.priorities.right);
         features.splice(secondIndex,1);
+
+        document.getElementById("leftPriority").checked = false
+        document.getElementById("rightPriority").checked = false
 
         this.priorities.done++;
         if(this.priorities.done > 3) {
