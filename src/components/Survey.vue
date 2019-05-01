@@ -231,11 +231,6 @@
       <div class="bottom-space" v-if="step === 4">
         <h1>Thank you for taking our survey!</h1>
         <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
-
-        <br/><br/>Role response: {{ role.checkedNames }}
-        <br/><br/>Sensors response: {{ sensor.checkedNames }}
-        <br/><br/>Priorities response: {{ priorities.checkedNames }}
-
       </div>
     </form>
 
