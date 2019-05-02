@@ -399,7 +399,7 @@
 }
 
 .choice {
-  width: 290px;
+  width: 245px;
 }
 .priority {
   width: 315px;
@@ -421,7 +421,7 @@
 .choice label {
   font-size: 16px;
   font-weight: lighter;
-  width: 250px;
+  width: 200px;
   float: right;
   margin-top: 8px;
 }
