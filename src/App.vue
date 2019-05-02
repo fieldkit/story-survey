@@ -11,7 +11,7 @@
       <img
         id="base"
         alt="FieldKit Landscape"
-        src="./assets/Fieldkit_Panel 01_Final_no_overlays_sized.png"
+        src="./assets/Fieldkit_Panel 01_Final_no_overlays_sized.jpg"
       />
       <img
         id="clouds"
@@ -83,7 +83,7 @@
       <!------- 5th IMG & PARA --------->
       <img
         alt="FieldKit is for everyone"
-        src="./assets/Fieldkit_Panel 05_Final_sized.png"
+        src="./assets/Fieldkit_Panel 05_Final_sized.jpg"
       />
       <TextBlock
         msg="FieldKit is for everyone."
@@ -99,7 +99,7 @@
     <img
       id="campers"
       alt="FieldKit Easy Install"
-      src="./assets/Fieldkit_People_01.png"
+      src="./assets/Fieldkit_People_01.jpg"
     />
     <div id="help-us" :class=$mq>
       <TextBlock
