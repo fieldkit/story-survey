@@ -171,8 +171,8 @@ export default {
 
 <style>
 :root {
-  --fk-gray: #264052;
-  --fk-red: #cc6575;
+  --fk-gray: #2C3E50;
+  --fk-red: #CE596B;
 }
 
 #app {
@@ -191,11 +191,11 @@ export default {
 
 #logo img {
   margin-top: 4em;
-  width: 40%;
+  width: 305px;
 }
 #app.mobile #logo img {
-  margin-top: 2em;
-  width: 55%;
+  margin-top: 40px;
+  width: 164px;
 }
 img {
   max-width: 100%;
@@ -209,24 +209,32 @@ img {
   position: relative;
 }
 
-h1 {
-  font-size: 2em;
-}
 #intro h1 {
-  font-size: 2.25em;
+  font-size: 36px;
+  font-weight: bold;
 }
-#app.mobile h1 {
-  font-size: 1.4em;
-  margin-bottom: 0.5em;
+h1 {
+  font-size: 32px;
 }
 #app.mobile #intro h1 {
-  font-size: 1.5em;
+  font-size: 24px;
   margin: 0;
 }
+#app.mobile h1 {
+  font-size: 22px;
+}
+#intro p {
+  font-size: 24px;
+}
+#app.mobile #intro p {
+  font-size: 18px;
+}
 
-h3 {
-  font-weight: normal;
-  color: grey;
+p {
+  font-size: 20px;
+}
+#app.mobile p {
+  font-size: 16px;
 }
 
 #clouds,
@@ -247,26 +255,11 @@ h3 {
 #contentEnd {
   padding-bottom: 7%;
   margin-bottom: 7%;
-  border-bottom: 1px solid #cccccc;
+  border-bottom: 1px solid #CCCDCF;
 }
 
 #campers {
   width: 70%;
-}
-
-p {
-  font-size: 1.15em;
-}
-#intro p {
-  font-size: 1.45em;
-}
-#app.mobile p {
-  font-size: 0.93em;
-}
-#app.mobile #intro p {
-  font-size: 1.15em;
-  line-height: 1.25em;
-  margin: 0.5em 0;
 }
 
 #help-us.mobile {
@@ -275,7 +268,7 @@ p {
 
 .hint {
   font-weight: lighter;
-  font-size: 0.9em;
+  font-size: 14px;
   margin-bottom: -5px;
 }
 

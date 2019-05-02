@@ -12,7 +12,7 @@
       <!-- Roles first -->
       <div v-if="step === 1">
         <div class="question-number">Question 1 of 6</div>
-        <h2>What role best describes what you do?</h2>
+        <h1>What role best describes what you do?</h1>
         <div class="instruction">(You can choose more than one!)</div>
         <div class="choice">
           <input
@@ -100,7 +100,7 @@
       <!-- Then sensors -->
       <div v-if="step === 2">
         <div class="question-number">Question 2 of 6</div>
-        <h2>What types of sensors are most interesting to you?</h2>
+        <h1>What types of sensors are most interesting to you?</h1>
         <div class="instruction">(You can choose more than one!)</div>
         <div class="choice">
           <input
@@ -199,7 +199,7 @@
       <!-- And then priorities -->
       <div class="bottom-space" v-if="step === 3">
         <div class="question-number">Question {{ 3 + priorities.done }} of 6</div>
-        <h2 class="smaller">Which of these features would be more important to you?</h2>
+        <h1 class="smaller">Which of these features would be more important to you?</h1>
         <div class="instruction">(Choose one)</div>
 
         <div id="priorities-wrapper">
@@ -386,28 +386,23 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#app.mobile h2 {
-  font-size: 1.4em;
-  line-height: 1.2em;
-  margin: 0.5em 0;
-}
-#app.mobile h2.smaller {
-  font-size: 1.3em;
+#app.mobile h1.smaller {
+  font-size: 21px;
 }
 
 #survey-form {
-  margin-top: 10%;
+  margin-top: 40px;
 }
 #survey-form p {
-  max-width: 400px;
+  max-width: 600px;
   margin: auto;
 }
 
 .choice {
-  width: 250px;
+  width: 290px;
 }
 .priority {
-  width: 310px;
+  width: 315px;
 }
 #priorities-wrapper {
   display: inline-block;
@@ -419,25 +414,22 @@
 }
 
 .instruction {
-  margin-top: -1.5%;
-  margin-bottom: 4%;
-  font-size: 1.2em;
-}
-#app.mobile .instruction {
-  font-size: 1em;
+  margin-top: -10px;
+  margin-bottom: 16px;
 }
 
 .choice label {
-  font-size: 1em;
+  font-size: 16px;
   font-weight: lighter;
-  width: 210px;
+  width: 250px;
   float: right;
-  padding-top: 8px;
+  margin-top: 8px;
 }
 
 .priority label {
+  font-size: 16px;
   float: left;
-  margin-top: 0.5em;
+  margin-top: 8px;
 }
 
 input[type="checkbox"] {
@@ -458,13 +450,13 @@ input[type="radio"] {
 
 .next-btn {
   width: 300px;
-  background: #cc6575;
+  height: 45px;
+  background: var(--fk-red);
   color: #FFF;
-  font-size: 1.2em;
+  font-size: 18px;
   font-weight: bold;
   border: none;
   border-radius: 4px;
-  padding: 12px 0;
   margin: 40px auto;
   cursor: pointer;
 }
@@ -473,60 +465,55 @@ input[type="radio"] {
   clear: both;
 }
 
-#app.mobile .question-number {
-  font-size: 0.9em;
-  font-weight: lighter;
-}
-
 #survey-form p.top-space {
-  margin-top: 5%;
+  margin-top: 16px;
 }
 .bottom-space {
-  margin-bottom: 15%;
-  padding: 0 1em;
+  margin-bottom: 40px;
 }
 
 #survey-form a {
   color: inherit;
   font-style: normal;
   font-weight: bold;
-  font-size: 1.15em;
 }
 
 #signup {
-  margin-top: 5%;
-  border-top: 1px solid #cccccc;
-  padding-top: 3%;
-}
-#signup h1 {
-  padding: 0 1em;
+  margin: 20px 0 100px 0;
+  border-top: 1px solid #CCCDCF;
+  padding-top: 16px;
 }
 #email {
+  font-size: 13px;
   min-width: 288px;
-  padding: 12px 0 12px 12px;
+  height: 45px;
+  padding: 0 9px;
   border-radius: 4px;
-  border: 1px solid lightgray;
-  margin-right: 3%;
+  border: 1px solid #D8DCE0;
+  margin-right: 16px;
 }
 #subscribe {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
-  font-size: 1.25em;
+  font-size: 18px;
   font-weight: bold;
   max-width: 300px;
+  height: 45px;
   background-color: white;
   color: var(--fk-red);
-  padding: 5px 50px;
-  margin: 1% 0 5% 0;
+  padding: 0 50px;
+  margin: 4px 0 16px 0;
   border: 1px solid var(--fk-red);
   border-radius: 4px;
   cursor: pointer;
 }
 #app.mobile #email {
   min-width: 260px;
-  margin: 1em 0;
+  height: 45px;
+  margin: 10px 0;
 }
 #app.mobile #subscribe {
   width: 275px;
+  height: 45px;
 }
 
 </style>
