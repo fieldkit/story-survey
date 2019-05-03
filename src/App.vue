@@ -181,12 +181,15 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--fk-gray);
-  max-width: 765px;
+  max-width: 780px;
   margin: 0 auto;
 }
 #app .narrower {
   width: 85%;
   margin-left: 7.5%;
+}
+#app.mobile .narrower {
+  max-width: 300px;
 }
 
 #logo img {
@@ -215,6 +218,10 @@ img {
 }
 h1 {
   font-size: 32px;
+}
+#app.mobile #intro {
+  max-width: 300px;
+  margin: auto;
 }
 #app.mobile #intro h1 {
   font-size: 24px;

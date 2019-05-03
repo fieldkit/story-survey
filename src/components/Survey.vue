@@ -386,6 +386,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#app.mobile #survey {
+  max-width: 300px;
+  margin: auto;
+}
 #app.mobile h1.smaller {
   font-size: 21px;
 }
