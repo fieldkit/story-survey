@@ -480,7 +480,7 @@
   margin-top: 8px;
 }
 #app.mobile .priority label {
-  max-width: 210px;
+  max-width: 208px;
   min-width: 130px;
 }
 
