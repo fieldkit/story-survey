@@ -181,8 +181,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: var(--fk-gray);
+  font-size: 20px;
   max-width: 780px;
   margin: 0 auto;
+}
+#app.mobile {
+  font-size: 16px;
 }
 #app .narrower {
   width: 85%;

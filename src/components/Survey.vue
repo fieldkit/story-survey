@@ -253,6 +253,7 @@
       <h1>Sign up to be notified when FieldKit is ready!</h1>
       <input type="textbox" v-model="email" id="email" name="email" placeholder="Add your email">
       <input type="submit" v-on:click="saveEmail()" id="subscribe" name="subscribe" value="Subscribe">
+      <div id="email-submitted">You're on our list!</div>
     </div>
 
     <popover name="leftInfo" id="leftInfo" class="info-text">{{ priorities.leftInfo }}</popover>
@@ -297,16 +298,20 @@
     }
 
     var encodedForm = Object.keys(form)
-        .map(
-          key => `${encodeURIComponent(key)}=${encodeURIComponent(form[key])}`
-        )
-        .join("&");
+      .map(
+        key => `${encodeURIComponent(key)}=${encodeURIComponent(form[key])}`
+      )
+      .join("&");
 
     survey.axios.post(
       "/",
       encodedForm,
       axiosConfig
     );
+    // re-display, in case they already subscribed before doing the survey
+    document.getElementById("email").style.display = "inline-block";
+    document.getElementById("subscribe").style.display = "inline-block";
+    document.getElementById("email-submitted").style.display = "none";
   }
 
   function pickTwo() {
@@ -401,16 +406,20 @@
         }
 
         var encodedForm = Object.keys(form)
-            .map(
-              key => `${encodeURIComponent(key)}=${encodeURIComponent(form[key])}`
-            )
-            .join("&");
+          .map(
+            key => `${encodeURIComponent(key)}=${encodeURIComponent(form[key])}`
+          )
+          .join("&");
 
         this.axios.post(
           "/",
           encodedForm,
           axiosConfig
         );
+        document.getElementById("email").style.display = "none";
+        document.getElementById("subscribe").style.display = "none";
+        document.getElementById("email-submitted").style.display = "block";
+
       }
     }
   };
@@ -580,6 +589,9 @@ input[type="radio"] {
 #app.mobile #subscribe {
   width: 275px;
   height: 45px;
+}
+#email-submitted {
+  display: none;
 }
 
 </style>
