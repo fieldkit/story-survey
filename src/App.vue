@@ -108,7 +108,19 @@
       />
     </div>
 
+    <!------- SURVEY --------->
+
     <SurveyForm />
+
+    <!------- FOOTER --------->
+
+    <div id="footer">
+      <p>Connect with us</p>
+      <a href="mailto:everyone@fieldkit.org"><img src="./assets/Email_Icon.svg" /></a>
+      <a href="https://www.instagram.com/fieldkitorg/"><img src="./assets/Instagram_Icon.svg" /></a>
+      <a href="https://www.twitter.com/fieldkitorg/"><img src="./assets/Twitter_Icon.svg" /></a>
+      <p class="top-space">Art by András Ferenczy</p>
+    </div>
 
   </div>
 </template>
@@ -283,5 +295,14 @@ p {
   margin-bottom: -5px;
 }
 
+#footer {
+  margin: 60px 0;
+}
+#footer img {
+  margin: 0 8px;
+}
+.top-space {
+  margin-top: 40px;
+}
 
 </style>

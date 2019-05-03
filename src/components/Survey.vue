@@ -554,7 +554,7 @@ input[type="radio"] {
 }
 
 #signup {
-  margin: 20px 0 100px 0;
+  margin-top: 20px;
   border-top: 1px solid #CCCDCF;
   padding-top: 16px;
 }
