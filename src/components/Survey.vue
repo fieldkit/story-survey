@@ -212,6 +212,13 @@
               v-model="priorities.selection"
             />
             <label for="leftPriority">{{ priorities.left }}</label>
+
+            <div v-if="$mq === 'desktop'">
+              <div v-popover:leftInfo.top class="info-prompt">i</div>
+            </div>
+            <div v-if="$mq === 'mobile'">
+              <div v-popover:leftInfo.left class="info-prompt">i</div>
+            </div>
           </div>
           <div class="priority">
             <input
@@ -222,6 +229,13 @@
               v-model="priorities.selection"
             />
             <label for="rightPriority">{{ priorities.right }}</label>
+
+            <div v-if="$mq === 'desktop'">
+              <div v-popover:rightInfo.bottom class="info-prompt">i</div>
+            </div>
+            <div v-if="$mq === 'mobile'">
+              <div v-popover:rightInfo.left class="info-prompt">i</div>
+            </div>
           </div>
         </div>
         <button @click.prevent="choose()" class="next-btn under">Next</button>
@@ -241,6 +255,9 @@
       <input type="submit" v-on:click="saveEmail()" id="subscribe" name="subscribe" value="Subscribe">
     </div>
 
+    <popover name="leftInfo" id="leftInfo" class="info-text">{{ priorities.leftInfo }}</popover>
+    <popover name="rightInfo" id="rightInfo" class="info-text">{{ priorities.rightInfo }}</popover>
+
   </div>
 </template>
 
@@ -256,6 +273,17 @@
     "An active online community",
     "Integration with non-FieldKit sensors"
   ];
+  const featuresInfo = {
+    "Low per-unit cost": "Full sensor configurations in the $150-750 range, depending on what you're measuring.",
+    "Long battery life in the field": "Solar charging functionality and low power consumption, allowing for months or years in the field.",
+    "Easy sharing of data": "Multiple export options and integration with common open data tools.",
+    "Data visualization": "Easy to read data graphics and charts.",
+    "Integration with social media feeds": "Ability to share data points and ranges through social media.",
+    "Research-grade data": "Accuracy and precision that is comparable to commercially available sensors being deployed for scientific research.",
+    "Easy setup for non experts": "Quick on-boarding for new users to allow for fast deployments.",
+    "An active online community": "Strong FieldKit user community and developers working on a new sensor design.",
+    "Integration with non-FieldKit sensors": "Ability to integrate currently available commercial environmental sensors with FieldKit sensors and data platform.",
+  };
   const axiosConfig = {
     header: { "Content-Type": "application/x-www-form-urlencoded" }
   };
@@ -306,6 +334,8 @@
         priorities: {
           left: features[firstTwo[0]],
           right: features[firstTwo[1]],
+          leftInfo: featuresInfo[features[firstTwo[0]]],
+          rightInfo: featuresInfo[features[firstTwo[1]]],
           selection: "none,none",
           checkedNames: [],
           done: 0
@@ -345,6 +375,8 @@
         var picks = pickTwo();
         this.priorities.left = features[picks[0]];
         this.priorities.right = features[picks[1]];
+        this.priorities.leftInfo = featuresInfo[features[picks[0]]];
+        this.priorities.rightInfo = featuresInfo[features[picks[1]]];
 
         // remove the new choices
         features.splice(picks[0],1)
@@ -406,7 +438,10 @@
   width: 245px;
 }
 .priority {
-  width: 315px;
+  width: 330px;
+}
+#app.mobile .priority {
+  width: 275px;
 }
 #priorities-wrapper {
   display: inline-block;
@@ -434,6 +469,10 @@
   font-size: 16px;
   float: left;
   margin-top: 8px;
+}
+#app.mobile .priority label {
+  max-width: 210px;
+  min-width: 130px;
 }
 
 input[type="checkbox"] {
@@ -467,6 +506,29 @@ input[type="radio"] {
 .next-btn.under {
   display: block;
   clear: both;
+}
+
+.info-prompt {
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  background: #A8AAB7;
+  color: #FFF;
+  float: left;
+  text-align: center;
+  line-height: 18px;
+  font-weight: bold;
+  margin: 8px 0 0 8px;
+  cursor: pointer;
+}
+
+.info-text {
+  text-align: left;
+  border: 1px solid #D8DCE0;
+  line-height: 20px;
+  color: #2C3E50;
+  background: #F9FAFC;
+  box-shadow: 0px 2px 8px 0px rgba(207,206,206,0.5);
 }
 
 #survey-form p.top-space {
