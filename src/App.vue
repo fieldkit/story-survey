@@ -202,7 +202,7 @@ export default {
 }
 #app .narrower {
   width: 85%;
-  margin-left: 7.5%;
+  margin: auto;
 }
 #app.mobile .narrower {
   max-width: 300px;
