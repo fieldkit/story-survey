@@ -220,6 +220,7 @@
               <div v-popover:leftInfo.left class="info-prompt"><img src="../assets/Info.svg" /></div>
             </div>
           </div>
+          <div class="space"></div>
           <div class="priority">
             <input
               type="radio"
@@ -474,6 +475,11 @@
   margin-top: 8px;
 }
 
+.space {
+  width: 100%;
+  height: 5px;
+  float: left;
+}
 .priority label {
   font-size: 16px;
   float: left;
