@@ -214,10 +214,10 @@
             <label for="leftPriority">{{ priorities.left }}</label>
 
             <div v-if="$mq === 'desktop'">
-              <div v-popover:leftInfo.top class="info-prompt">i</div>
+              <div v-popover:leftInfo.top class="info-prompt"><img src="../assets/Info.svg" /></div>
             </div>
             <div v-if="$mq === 'mobile'">
-              <div v-popover:leftInfo.left class="info-prompt">i</div>
+              <div v-popover:leftInfo.left class="info-prompt"><img src="../assets/Info.svg" /></div>
             </div>
           </div>
           <div class="priority">
@@ -231,10 +231,10 @@
             <label for="rightPriority">{{ priorities.right }}</label>
 
             <div v-if="$mq === 'desktop'">
-              <div v-popover:rightInfo.bottom class="info-prompt">i</div>
+              <div v-popover:rightInfo.bottom class="info-prompt"><img src="../assets/Info.svg" /></div>
             </div>
             <div v-if="$mq === 'mobile'">
-              <div v-popover:rightInfo.left class="info-prompt">i</div>
+              <div v-popover:rightInfo.left class="info-prompt"><img src="../assets/Info.svg" /></div>
             </div>
           </div>
         </div>
@@ -520,14 +520,8 @@ input[type="radio"] {
 .info-prompt {
   width: 16px;
   height: 16px;
-  border-radius: 8px;
-  background: #A8AAB7;
-  color: #FFF;
   float: left;
-  text-align: center;
-  line-height: 18px;
-  font-weight: bold;
-  margin: 8px 0 0 8px;
+  margin: 7px 0 0 8px;
   cursor: pointer;
 }
 
