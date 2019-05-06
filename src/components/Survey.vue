@@ -10,244 +10,252 @@
 
     <form id="survey-form">
       <!-- Roles first -->
-      <div v-if="step === 1">
-        <div class="question-number">Question 1 of 6</div>
-        <h1>What role best describes what you do?</h1>
-        <div class="instruction">(You can choose more than one!)</div>
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="fieldScience"
-            value="Field Scientist"
-            v-model="role.checkedNames"
-          />
-          <label for="fieldScience">Field Scientist</label>
-        </div>
+      <transition name="slide" mode="out-in">
 
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="citScience"
-            value="Citizen Scientist"
-            v-model="role.checkedNames"
-          />
-          <label for="citScience">Citizen Scientist</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="educator"
-            value="Educator"
-            v-model="role.checkedNames"
-          />
-          <label for="educator">Educator</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="sciComm"
-            value="Science Communicator"
-            v-model="role.checkedNames"
-          />
-          <label for="sciComm">Science Communicator</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="naturalist"
-            value="Naturalist"
-            v-model="role.checkedNames"
-          />
-          <label for="naturalist">Naturalist</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="enviroAdvocate"
-            value="Environmental Advocate"
-            v-model="role.checkedNames"
-          />
-          <label for="enviroAdvocate">Environmental Advocate</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="engineer"
-            value="Engineer"
-            v-model="role.checkedNames"
-          />
-          <label for="engineer">Engineer</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="roleOther"
-            value="Other"
-            v-model="role.checkedNames"
-          />
-          <label for="roleOther">Other</label>
-        </div>
-        <button @click.prevent="next()" class="next-btn">Next</button>
-      </div>
-
-
-      <!-- Then sensors -->
-      <div v-if="step === 2">
-        <div class="question-number">Question 2 of 6</div>
-        <h1>What types of sensors are most interesting to you?</h1>
-        <div class="instruction">(You can choose more than one!)</div>
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="waterQual"
-            value="Water quality"
-            v-model="sensor.checkedNames"
-          />
-          <label for="waterQual">Water quality</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="waterLevelFlow"
-            value="Water level & flow rate"
-            v-model="sensor.checkedNames"
-          />
-          <label for="waterLevelFlow">Water level & flow rate</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="weather"
-            value="Weather"
-            v-model="sensor.checkedNames"
-          />
-          <label for="weather">Weather</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="airQual"
-            value="Air quality"
-            v-model="sensor.checkedNames"
-          />
-          <label for="airQual">Air quality</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="acoustic"
-            value="Acoustic"
-            v-model="sensor.checkedNames"
-          />
-          <label for="acoustic">Acoustic</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="cameraTrap"
-            value="Camera traps"
-            v-model="sensor.checkedNames"
-          />
-          <label for="cameraTrap">Camera traps</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="soilHum"
-            value="Soil humidity"
-            v-model="sensor.checkedNames"
-          />
-          <label for="soilHum">Soil humidity</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="seismic"
-            value="Seismic"
-            v-model="sensor.checkedNames"
-          />
-          <label for="seismic">Seismic</label>
-        </div>
-
-        <div class="choice">
-          <input
-            type="checkbox"
-            id="sensorOther"
-            value="Other"
-            v-model="sensor.checkedNames"
-          />
-          <label for="sensorOther">Other</label>
-        </div>
-
-        <button @click.prevent="next()" class="next-btn">Next</button>
-      </div>
-
-
-      <!-- And then priorities -->
-      <div class="bottom-space" v-if="step === 3">
-        <div class="question-number">Question {{ 3 + priorities.done }} of 6</div>
-        <h1 class="smaller">Which of these features would be more important to you?</h1>
-        <div class="instruction">(Choose one)</div>
-
-        <div id="priorities-wrapper">
-          <div class="priority">
+        <div v-if="step === 1" key="first-step">
+          <div class="question-number">Question 1 of 6</div>
+          <h1>What role best describes what you do?</h1>
+          <div class="instruction">(You can choose more than one!)</div>
+          <div class="choice">
             <input
-              type="radio"
-              id="leftPriority"
-              value="left,right"
-              name="featurePriority"
-              v-model="priorities.selection"
+              type="checkbox"
+              id="fieldScience"
+              value="Field Scientist"
+              v-model="role.checkedNames"
             />
-            <label for="leftPriority">{{ priorities.left }}</label>
-
-            <div v-if="$mq === 'desktop'">
-              <div v-popover:leftInfo.top class="info-prompt"><img src="../assets/Info.svg" /></div>
-            </div>
-            <div v-if="$mq === 'mobile'">
-              <div v-popover:leftInfo.left class="info-prompt"><img src="../assets/Info.svg" /></div>
-            </div>
+            <label for="fieldScience">Field Scientist</label>
           </div>
-          <div class="space"></div>
-          <div class="priority">
+
+          <div class="choice">
             <input
-              type="radio"
-              id="rightPriority"
-              value="right,left"
-              name="featurePriority"
-              v-model="priorities.selection"
+              type="checkbox"
+              id="citScience"
+              value="Citizen Scientist"
+              v-model="role.checkedNames"
             />
-            <label for="rightPriority">{{ priorities.right }}</label>
-
-            <div v-if="$mq === 'desktop'">
-              <div v-popover:rightInfo.bottom class="info-prompt"><img src="../assets/Info.svg" /></div>
-            </div>
-            <div v-if="$mq === 'mobile'">
-              <div v-popover:rightInfo.left class="info-prompt"><img src="../assets/Info.svg" /></div>
-            </div>
+            <label for="citScience">Citizen Scientist</label>
           </div>
-        </div>
-        <button @click.prevent="choose()" class="next-btn under">Next</button>
-      </div>
 
-      <!-- Thank you -->
-      <div class="bottom-space" v-if="step === 4">
-        <h1>Thank you for taking our survey!</h1>
-        <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
-        <p class="top-space">Provide your email below and we'll send you a discount code when FieldKit is ready to go.</p>
-      </div>
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="educator"
+              value="Educator"
+              v-model="role.checkedNames"
+            />
+            <label for="educator">Educator</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="sciComm"
+              value="Science Communicator"
+              v-model="role.checkedNames"
+            />
+            <label for="sciComm">Science Communicator</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="naturalist"
+              value="Naturalist"
+              v-model="role.checkedNames"
+            />
+            <label for="naturalist">Naturalist</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="enviroAdvocate"
+              value="Environmental Advocate"
+              v-model="role.checkedNames"
+            />
+            <label for="enviroAdvocate">Environmental Advocate</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="engineer"
+              value="Engineer"
+              v-model="role.checkedNames"
+            />
+            <label for="engineer">Engineer</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="roleOther"
+              value="Other"
+              v-model="role.checkedNames"
+            />
+            <label for="roleOther">Other</label>
+          </div>
+          <button @click.prevent="next()" class="next-btn">Next</button>
+        </div>
+
+        <!-- Then sensors -->
+        <div v-if="step === 2" key="second-step">
+          <div class="question-number">Question 2 of 6</div>
+          <h1>What types of sensors are most interesting to you?</h1>
+          <div class="instruction">(You can choose more than one!)</div>
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="waterQual"
+              value="Water quality"
+              v-model="sensor.checkedNames"
+            />
+            <label for="waterQual">Water quality</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="waterLevelFlow"
+              value="Water level & flow rate"
+              v-model="sensor.checkedNames"
+            />
+            <label for="waterLevelFlow">Water level & flow rate</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="weather"
+              value="Weather"
+              v-model="sensor.checkedNames"
+            />
+            <label for="weather">Weather</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="airQual"
+              value="Air quality"
+              v-model="sensor.checkedNames"
+            />
+            <label for="airQual">Air quality</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="acoustic"
+              value="Acoustic"
+              v-model="sensor.checkedNames"
+            />
+            <label for="acoustic">Acoustic</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="cameraTrap"
+              value="Camera traps"
+              v-model="sensor.checkedNames"
+            />
+            <label for="cameraTrap">Camera traps</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="soilHum"
+              value="Soil humidity"
+              v-model="sensor.checkedNames"
+            />
+            <label for="soilHum">Soil humidity</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="seismic"
+              value="Seismic"
+              v-model="sensor.checkedNames"
+            />
+            <label for="seismic">Seismic</label>
+          </div>
+
+          <div class="choice">
+            <input
+              type="checkbox"
+              id="sensorOther"
+              value="Other"
+              v-model="sensor.checkedNames"
+            />
+            <label for="sensorOther">Other</label>
+          </div>
+
+          <button @click.prevent="next()" class="next-btn">Next</button>
+        </div>
+
+        <!-- And then priorities -->
+        <div class="bottom-space" v-if="step === 3" key="third-step">
+          <div class="question-number">Question {{ 3 + priorities.done }} of 6</div>
+          <h1 class="smaller">Which of these features would be more important to you?</h1>
+          <div class="instruction">(Choose one)</div>
+
+          <div id="priorities-wrapper">
+            <transition name="radio-slide" mode="out-in" v-on:after-enter="afterEnter">
+              <div class="priority" :key="priorities.left">
+                <input
+                  type="radio"
+                  id="leftPriority"
+                  value="left,right"
+                  name="featurePriority"
+                  v-model="priorities.selection"
+                />
+                <label for="leftPriority">{{ priorities.left }}</label>
+
+                <div v-if="$mq === 'desktop'">
+                  <div v-popover:leftInfo.top class="info-prompt"><img src="../assets/Info.svg" /></div>
+                </div>
+                <div v-if="$mq === 'mobile'">
+                  <div v-popover:leftInfo.left class="info-prompt"><img src="../assets/Info.svg" /></div>
+                </div>
+              </div>
+            </transition>
+
+            <div class="small-space"></div>
+
+            <transition name="radio-slide" mode="out-in">
+              <div class="priority" :key="priorities.right">
+                <input
+                  type="radio"
+                  id="rightPriority"
+                  value="right,left"
+                  name="featurePriority"
+                  v-model="priorities.selection"
+                />
+                <label for="rightPriority">{{ priorities.right }}</label>
+
+                <div v-if="$mq === 'desktop'">
+                  <div v-popover:rightInfo.bottom class="info-prompt"><img src="../assets/Info.svg" /></div>
+                </div>
+                <div v-if="$mq === 'mobile'">
+                  <div v-popover:rightInfo.left class="info-prompt"><img src="../assets/Info.svg" /></div>
+                </div>
+              </div>
+            </transition>
+          </div>
+          <button @click.prevent="choose()" class="next-btn under">Next</button>
+        </div>
+
+        <!-- Thank you -->
+        <div class="bottom-space" v-if="step === 4" key="fourth-step">
+          <h1>Thank you for taking our survey!</h1>
+          <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
+          <p class="top-space">Provide your email below and we'll send you a discount code when FieldKit is ready to go.</p>
+        </div>
+
+      </transition>
     </form>
 
     <div id="signup">
@@ -357,6 +365,10 @@
       next() {
         this.step++;
       },
+      afterEnter: function (el) {
+        document.getElementById("leftPriority").checked = false;
+        document.getElementById("rightPriority").checked = false;
+      },
       choose: function() {
         if(this.priorities.done === 0) {
           // remove first two choices
@@ -388,9 +400,6 @@
         features.splice(picks[0],1)
         var secondIndex = features.indexOf(this.priorities.right);
         features.splice(secondIndex,1);
-
-        document.getElementById("leftPriority").checked = false
-        document.getElementById("rightPriority").checked = false
 
         this.priorities.done++;
         if(this.priorities.done > 3) {
@@ -476,7 +485,7 @@
   margin-top: 8px;
 }
 
-.space {
+.small-space {
   width: 100%;
   height: 5px;
   float: left;
@@ -595,4 +604,54 @@ input[type="radio"] {
   display: none;
 }
 
+.slide-enter {
+  width: 100%;
+  opacity: 0;
+  margin-left: 150px;
+}
+.slide-enter-to {
+  width: 100%;
+  opacity: 1;
+  margin-left: 0;
+}
+.slide-enter-active {
+  transition: 300ms ease-in;
+}
+.slide-leave {
+  width: 100%;
+  opacity: 1;
+  margin-left: 0;
+}
+.slide-leave-to {
+  width: 100%;
+  opacity: 0;
+  margin-left: -50px;
+}
+.slide-leave-active {
+  transition: 200ms ease-out;
+}
+
+
+.radio-slide-enter {
+  opacity: 0;
+  margin-left: 50px;
+}
+.radio-slide-enter-to {
+  opacity: 1;
+  margin-left: 0;
+}
+.radio-slide-enter-active {
+  transition: 100ms ease-in;
+}
+.radio-slide-leave {
+  opacity: 1;
+  margin-left: 0;
+}
+.radio-slide-leave-to {
+  opacity: 0;
+  margin-left: -50px;
+}
+.radio-slide-leave-active {
+  transition: 300ms ease-out;
+}
 </style>
