@@ -14,11 +14,13 @@
           alt="FieldKit Landscape"
           src="./assets/Fieldkit_Panel 01_Final_no_overlays_sized.jpg"
         />
-        <img
-          id="clouds"
-          alt="FieldKit Landscape"
-          src="./assets/Fieldkit_Panel 01_Final_clouds_sized.png"
-        />
+        <div id="cloud-wrapper" :class="$mq">
+          <img
+            id="clouds"
+            alt="FieldKit Landscape"
+            src="./assets/Fieldkit_Panel 01_Final_clouds_sized.png"
+          />
+        </div>
         <img
           id="signal1"
           alt="FieldKit Landscape"
@@ -139,16 +141,16 @@
 import TextBlock from "./components/TextBlock.vue";
 import SurveyForm from "./components/Survey.vue";
 
-// var cloudX = 0;
+var cloudX = 0;
 var tas = [1.0, 1.0, 1.0];
 
-// setInterval(function() {
-//   document.getElementById("clouds").style.left = cloudX + "px";
-//   //console.log(Math.floor(cloudX) + "px");
-//   cloudX += 0.1;
-// }, 30);
+function moveClouds() {
+  document.getElementById("clouds").style.left = cloudX + "px";
+  cloudX += 0.1;
+  if (cloudX > 745) {cloudX = 0;}
+}
 
-setInterval(function() {
+function blinkSignals() {
   var v1 = document.getElementById("signal1").style.opacity;
   if (v1 == "") v1 = 0;
   var t1 = parseFloat(v1) + (tas[0] - parseFloat(v1)) * 0.01;
@@ -176,7 +178,7 @@ setInterval(function() {
   if (Math.random() < chance) {
     tas[2] = tas[2] == 1 ? 0 : 1;
   }
-}, 3);
+}
 
 
 export default {
@@ -184,6 +186,12 @@ export default {
   components: {
     TextBlock,
     SurveyForm
+  },
+  mounted() {
+    if(this.$mq == "desktop") {
+      setInterval(moveClouds, 30);
+    }
+    setInterval(blinkSignals, 3);
   },
   methods: {
   }
@@ -276,6 +284,17 @@ p {
   font-size: 16px;
 }
 
+#cloud-wrapper {
+  width: 780px;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+#cloud-wrapper.mobile {
+  display: none;
+}
 #clouds,
 #signal1,
 #signal2,
