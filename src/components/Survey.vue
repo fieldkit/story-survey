@@ -437,7 +437,8 @@
 }
 
 #survey-form {
-  margin-top: 40px;
+  max-width: 780px;
+  margin: 40px auto 0 auto;
 }
 #survey-form p {
   max-width: 600px;
