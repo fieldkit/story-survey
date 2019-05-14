@@ -365,7 +365,7 @@
       next() {
         this.step++;
       },
-      afterEnter: function (el) {
+      afterEnter: function() {
         document.getElementById("leftPriority").checked = false;
         document.getElementById("rightPriority").checked = false;
       },
