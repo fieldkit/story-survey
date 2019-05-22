@@ -255,6 +255,19 @@
           <h1>Thank you for taking our survey!</h1>
           <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
           <p class="top-space">Provide your email below and we'll send you a discount code when FieldKit is ready to go.</p>
+
+          <div class="consent-prompt">
+            <div class="left-text">May we contact you with follow-up questions?</div>
+            <input
+              type="checkbox"
+              id="consent"
+              value="consent"
+              v-model="consent"
+            />
+            <label for="consent" id="consent-label">Yes!</label>
+            <p class="smaller">Note: if you click "Yes!" we'll be able to match your email to your survey responses.</p>
+          </div>
+
         </div>
 
       </transition>
@@ -274,6 +287,8 @@
 </template>
 
 <script>
+  import uuidv4 from 'uuid/v4';
+
   const features = [
     "Low per-unit cost",
     "Long battery life in the field",
@@ -300,6 +315,8 @@
     header: { "Content-Type": "application/x-www-form-urlencoded" }
   };
 
+  const uuid = uuidv4();
+
   function storeSurvey(survey) {
     // add "Other" text inputs
     if(survey.role.other) {survey.role.checkedNames.push(survey.role.other);}
@@ -310,6 +327,7 @@
       "roles": survey.role.checkedNames.join(","),
       "sensors": survey.sensor.checkedNames.join(","),
       "features": survey.priorities.checkedNames.join(","),
+      "uuid": uuid
     }
 
     var encodedForm = Object.keys(form)
@@ -418,7 +436,8 @@
         var form = {
           "form-name": "netlify-email",
           "email": this.email,
-          "surveyComplete": this.surveyComplete
+          "surveyComplete": this.surveyComplete,
+          "uuid": this.consent ? uuid : ""
         }
 
         var encodedForm = Object.keys(form)
@@ -488,6 +507,34 @@
 }
 #app.mobile #roleOtherInput, #app.mobile #sensorOtherInput {
   min-width: 245px;
+}
+
+.consent-prompt {
+  margin-top: 12px;
+}
+.left-text {
+  display: inline-block;
+}
+#app.mobile .left-text {
+  width: 200px;
+  float: left;
+}
+#app.mobile #consent {
+  float: left;
+}
+#app.mobile #consent-label {
+  float: left;
+  margin: 7px 0 30px 0;
+}
+.consent-prompt .smaller {
+  font-size: 16px;
+}
+#app.mobile .consent-prompt .smaller {
+  width: 300px;
+  font-size: 14px;
+}
+#consent {
+  vertical-align: bottom;
 }
 
 .instruction {
