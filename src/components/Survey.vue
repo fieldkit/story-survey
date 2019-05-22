@@ -94,6 +94,7 @@
               v-model="role.checkedNames"
             />
             <label for="roleOther">Other</label>
+            <input type="textbox" v-model="role.other" id="roleOtherInput" name="roleOtherInput" placeholder="Enter your role">
           </div>
           <button @click.prevent="next()" class="next-btn">Next</button>
         </div>
@@ -191,6 +192,7 @@
               v-model="sensor.checkedNames"
             />
             <label for="sensorOther">Other</label>
+            <input type="textbox" v-model="sensor.other" id="sensorOtherInput" name="sensorOtherInput" placeholder="Specify a type of sensor">
           </div>
 
           <button @click.prevent="next()" class="next-btn">Next</button>
@@ -299,6 +301,10 @@
   };
 
   function storeSurvey(survey) {
+    // add "Other" text inputs
+    if(survey.role.other) {survey.role.checkedNames.push(survey.role.other);}
+    if(survey.sensor.other) {survey.sensor.checkedNames.push(survey.sensor.other);}
+
     var form = {
       "form-name": "netlify-survey",
       "roles": survey.role.checkedNames.join(","),
@@ -470,6 +476,18 @@
   margin: auto;
   display: block;
   text-align: left;
+}
+#roleOtherInput, #sensorOtherInput {
+  font-size: 13px;
+  min-width: 288px;
+  height: 45px;
+  padding: 0 9px;
+  border-radius: 4px;
+  border: 1px solid #D8DCE0;
+  margin-right: 16px;
+}
+#app.mobile #roleOtherInput, #app.mobile #sensorOtherInput {
+  min-width: 245px;
 }
 
 .instruction {
