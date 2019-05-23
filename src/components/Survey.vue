@@ -10,7 +10,7 @@
 
     <form id="survey-form">
       <!-- Roles first -->
-      <transition name="slide" mode="out-in">
+      <transition name="slide" mode="out-in" v-on:after-enter="afterBlockEnter">
 
         <div v-if="step === 1" key="first-step">
           <div class="question-number">Question 1 of 6</div>
@@ -205,7 +205,7 @@
           <div class="instruction">(Choose one)</div>
 
           <div id="priorities-wrapper">
-            <transition name="radio-slide" mode="out-in" v-on:after-enter="afterEnter">
+            <transition name="radio-slide" mode="out-in" v-on:after-enter="afterPriorityEnter">
               <div class="priority" :key="priorities.left">
                 <input
                   type="radio"
@@ -256,18 +256,19 @@
           <p>Your comments are important to us. If you have any more ideas or comments, please email <a href="mailto:everyone@fieldkit.org">everyone@fieldkit.org</a></p>
           <p class="top-space">Provide your email below and we'll send you a discount code when FieldKit is ready to go.</p>
 
-          <div class="consent-prompt">
-            <div class="left-text">May we contact you with follow-up questions?</div>
-            <input
-              type="checkbox"
-              id="consent"
-              value="consent"
-              v-model="consent"
-            />
-            <label for="consent" id="consent-label">Yes!</label>
-            <p class="smaller">Note: if you click "Yes!" we'll be able to match your email to your survey responses.</p>
+          <div id="survey-complete-email">
+            <div id="append-email"></div>
+            <div id="append-subscribe">
+              <input
+                type="checkbox"
+                id="consent"
+                value="consent"
+                v-model="consent"
+              />
+              <label for="consent" id="consent-label">FieldKit may contact me with follow-up questions</label>
+              <p class="smaller">Note: This will allow us to match your email to your survey responses.</p>
+            </div>
           </div>
-
         </div>
 
       </transition>
@@ -276,7 +277,7 @@
     <div id="signup">
       <h1>Sign up to be notified when FieldKit is ready!</h1>
       <input type="textbox" v-model="email" id="email" name="email" placeholder="Add your email">
-      <input type="submit" v-on:click="saveEmail()" id="subscribe" name="subscribe" value="Subscribe">
+      <input type="button" v-on:click="saveEmail()" id="subscribe" name="subscribe" value="Subscribe">
       <div id="email-submitted">You're on our list!</div>
     </div>
 
@@ -341,10 +342,15 @@
       encodedForm,
       axiosConfig
     );
-    // re-display, in case they already subscribed before doing the survey
+  }
+
+  function showLastStep() {
     document.getElementById("email").style.display = "inline-block";
     document.getElementById("subscribe").style.display = "inline-block";
-    document.getElementById("email-submitted").style.display = "none";
+    document.getElementById("append-email").appendChild(document.getElementById("email"));
+    document.getElementById("append-subscribe").appendChild(document.getElementById("subscribe"));
+    document.getElementById("signup").style.display = "none";
+
   }
 
   function pickTwo() {
@@ -379,6 +385,7 @@
           done: 0
         },
         email: "",
+        consent: null,
         surveyComplete: 0
       };
     },
@@ -389,7 +396,13 @@
       next() {
         this.step++;
       },
-      afterEnter: function() {
+      afterBlockEnter: function() {
+        if(this.step == 4) {
+          // manually set up last step
+          showLastStep();
+        }
+      },
+      afterPriorityEnter: function() {
         document.getElementById("leftPriority").checked = false;
         document.getElementById("rightPriority").checked = false;
       },
@@ -454,7 +467,8 @@
         document.getElementById("email").style.display = "none";
         document.getElementById("subscribe").style.display = "none";
         document.getElementById("email-submitted").style.display = "block";
-
+        document.getElementById("append-subscribe").innerHTML = "You're on our list!";
+        document.getElementById("append-subscribe").style.fontWeight = "bold";
       }
     }
   };
@@ -509,28 +523,37 @@
   min-width: 245px;
 }
 
-.consent-prompt {
-  margin-top: 12px;
+#survey-complete-email {
+  margin-top: 18px;
+  max-width: 485px;
+  margin: 20px auto 0 auto;
 }
-.left-text {
+#consent {
+  float: left;
+}
+#consent-label {
+  float: left;
+  margin: 7px 0 0 0;
+}
+#survey-complete-email .smaller {
+  font-size: 18px;
+  margin: 6px auto 0px auto;
+  width: 460px;
   display: inline-block;
 }
-#app.mobile .left-text {
-  width: 200px;
-  float: left;
+#survey-complete-email #email {
+  margin-bottom: 16px;
 }
-#app.mobile #consent {
-  float: left;
+#survey-complete-email #subscribe {
+  margin-top: 20px;
 }
 #app.mobile #consent-label {
-  float: left;
-  margin: 7px 0 30px 0;
+  width: 255px;
+  text-align: left;
+  margin-bottom: 10px;
 }
-.consent-prompt .smaller {
-  font-size: 16px;
-}
-#app.mobile .consent-prompt .smaller {
-  width: 300px;
+#app.mobile #survey-complete-email .smaller {
+  width: 285px;
   font-size: 14px;
 }
 #consent {
@@ -655,6 +678,9 @@ input[type="radio"] {
   border: 1px solid var(--fk-red);
   border-radius: 4px;
   cursor: pointer;
+}
+#survey-complete-email #subscribe {
+  min-width: 288px;
 }
 #app.mobile #email {
   min-width: 260px;
