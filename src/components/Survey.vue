@@ -8,6 +8,8 @@
       </div>
     </div>
 
+    <div class="spacer"></div>
+
     <form id="survey-form">
       <!-- Roles first -->
       <transition name="slide" mode="out-in" v-on:after-enter="afterBlockEnter">

@@ -37,84 +37,13 @@
           src="./assets/Fieldkit_Panel 01_Final_signal3_sized.png"
         />
       </div>
-
-      <!------- 1st PARA --------->
-      <div id="intro">
-        <TextBlock
-          msg="FieldKit is coming."
-          msg2="FieldKit lets everyone everywhere monitor the world around them with low-cost, reliable sensors and easy-to-use tools for storing, sharing and telling stories with data."
-        />
-      </div>
-      <div id="scrollDown">
-        <div class="hint">Scroll to be notified when FieldKit is ready</div>
-        <div class="arrow">
-          <img src="./assets/downward-arrow.png" width="30px" height="30px" />
-        </div>
-      </div>
     </div>
 
-    <div class="spacer"></div>
-
     <div class="inner-container">
-      <div class="narrower">
-        <!------- 2nd IMG & PARA --------->
-        <img
-          alt="FieldKit Easy Install"
-          src="./assets/Fieldkit_Panel 02_Final_sized.jpg"
-        />
-        <TextBlock
-          msg="Easy-to-use environmental sensing."
-          msg2="FieldKit sensors are designed to be accurate, durable and extensible. Our mobile app makes configuration, testing and deployment easy for amateurs and professionals alike."
-        />
-
-        <!------- 3rd IMG & PARA --------->
-        <img
-          alt="FieldKit Easy Install"
-          src="./assets/Fieldkit_Panel 03_Final_sized.jpg"
-        />
-        <TextBlock
-          msg="For sensor projects, big and small."
-          msg2="FieldKit’s low per-unit cost makes deploying networks of several, dozens, even hundreds of sensors possible - no matter how small the budget."
-        />
-
-        <!------- 4th IMG & PARA --------->
-        <img
-          alt="FieldKit Easy Install"
-          src="./assets/Fieldkit_Panel 04_Final_sized.jpg"
-        />
-        <TextBlock
-          msg="Easily explore and share your data."
-          msg2="The FieldKit platform securely stores and manages your data, and lets you share and tell stories with it."
-        />
-
-        <!------- 5th IMG & PARA --------->
-        <img
-          alt="FieldKit is for everyone"
-          src="./assets/Fieldkit_Panel 05_Final_sized.jpg"
-        />
-        <TextBlock
-          msg="FieldKit is for everyone."
-          msg2="We’re building FieldKit because we believe everyone should be able to understand and advocate for the world they live in.
-
-        FieldKit is a tool for field scientists, environmental advocates, naturalists, students and teachers, and most importantly… it’s for you!
-        "
-        />
-
-      </div> <!-- end narrower -->
-    </div>
-
-    <div class="spacer"></div>
-
-    <div class="inner-container">
-      <img
-        id="campers"
-        alt="FieldKit Easy Install"
-        src="./assets/Fieldkit_People_01.jpg"
-      />
       <div id="help-us" :class=$mq>
         <TextBlock
           msg="Help us make FieldKit."
-          msg2="We're trying to learn a bit more about how people might use FieldKit in the real world. Help us by answering a few easy questions (only three or four minutes), and we'll give you a special discount when FieldKit is released."
+          msg2="We're trying to learn a bit more about how people might use FieldKit in the real world. Help us by answering a few easy questions (only 3-4 minutes)."
         />
       </div>
     </div>
@@ -212,13 +141,13 @@ export default {
   color: var(--fk-gray);
   font-size: 20px;
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 785px;
 }
 #app.mobile {
   font-size: 16px;
 }
 .inner-container {
-  max-width: 780px;
+  max-width: 700px;
   margin: auto;
 }
 #app.mobile .inner-container {
@@ -242,10 +171,6 @@ export default {
 }
 img {
   max-width: 100%;
-}
-#imageStack.desktop img {
-  max-width: 125%;
-  margin-left: -10%;
 }
 
 #imageStack {
@@ -285,7 +210,7 @@ p {
 }
 
 #cloud-wrapper {
-  width: 780px;
+  width: 624px;
   height: 500px;
   position: absolute;
   top: 0;
@@ -314,6 +239,7 @@ p {
   margin-bottom: 7%;
 }
 .spacer {
+  padding-bottom: 20px;
   border-bottom: 1px solid #CCCDCF;
 }
 
